@@ -13,7 +13,7 @@ const purchasesApi = {
 
   createNewPurchase: (body: any) =>
     tryCatchWrapper(async () => {
-      const res = await http.post(LIST, body);
+      const res = await http.post(LIST, { ...body });
 
       return res;
     }),

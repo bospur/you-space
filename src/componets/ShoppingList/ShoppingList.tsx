@@ -1,4 +1,4 @@
-import React, { useCallback, useEffect, useState } from 'react';
+import React, { FC, useCallback, useEffect, useState } from 'react';
 
 import styles from './ShoppingList.module.scss';
 import { IPurchase } from '../../ts/models/shopping.model';
@@ -6,11 +6,16 @@ import { testShopping } from '../../data/testShoppingData';
 import ShoppingItem from './ShoppingItem/ShoppingItem';
 import purchasesApi from '../../api/purchases';
 
-const ShoppingList = () => {
+interface IShoppingList {
+  isUpdate: boolean;
+  setIsUpdate: SetState<boolean>;
+}
+
+const ShoppingList: FC<IShoppingList> = ({ isUpdate, setIsUpdate }) => {
   const [shoppingList, setShoppingList] = useState<IPurchase[]>([]);
 
   const getData = useCallback(async () => {
-    // fake api for testing
+    setIsUpdate(false);
     const res = await purchasesApi.fetchAllList();
 
     if (!res) return;
@@ -21,6 +26,10 @@ const ShoppingList = () => {
   useEffect(() => {
     getData();
   }, []);
+
+  useEffect(() => {
+    isUpdate && getData();
+  }, [isUpdate]);
 
   return (
     <ul className={styles.wrapper}>

@@ -1,0 +1,17 @@
+{
+    "presets": [
+        [
+            "env",
+            {
+                "targets": {
+                    "chrome": "60"
+                },
+                "test": {
+                    "plugins": [
+                        "@babel/plugin-transform-modules-commonjs"
+                    ]
+                }
+            }
+        ]
+    ]
+}

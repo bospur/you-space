@@ -1,10 +1,11 @@
-import Purchases from "../Purchases/Purchases";
-import styles from "./App.module.scss";
+import MainTabs from '../MainTabs/MainTabs';
+import Purchases from '../Purchases/Purchases';
+import styles from './App.module.scss';
 
 function App() {
   return (
     <section className={styles.app}>
-      <Purchases />
+      <MainTabs />
     </section>
   );
 }

@@ -10,7 +10,7 @@ const LOCAL = 'http://localhost:5000';
 const PROD = 'http://you.itstud.ru/api/';
 
 const requestSettings: AxiosRequestConfig = {
-  baseURL: LOCAL,
+  baseURL: PROD,
   headers: HEADERS,
 };
 

@@ -17,6 +17,12 @@ const purchasesApi = {
 
       return res;
     }),
+  deletePurchase: (id: number) =>
+    tryCatchWrapper(async () => {
+      const res = http.delete(LIST + `/${id}`);
+
+      return res;
+    }),
 };
 
 export default purchasesApi;

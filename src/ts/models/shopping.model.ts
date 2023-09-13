@@ -4,5 +4,5 @@ type ShoppingKeys = keyof typeof SHOPPING_VOCAB;
 export type IPurchase = {
   category: ShoppingKeys;
   amount: number;
-  id: number;
+  purchase_id: number;
 };

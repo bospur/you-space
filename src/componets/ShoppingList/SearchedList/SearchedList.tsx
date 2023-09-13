@@ -3,19 +3,19 @@ import { FC, useEffect, useState } from 'react';
 import { IPurchase } from '../../../ts/models/shopping.model';
 
 import styles from './SearchedList.module.scss';
-import { testShopping } from '../../../data/testShoppingData';
 import { SHOPPING_VOCAB } from '../../../constants/vocabluares/shoppingVocab';
 
 interface ISearchedList {
   setShoppingList: SetState<IPurchase[]>;
+  data: IPurchase[];
 }
 
-const SearchedList: FC<ISearchedList> = ({ setShoppingList }) => {
+const SearchedList: FC<ISearchedList> = ({ setShoppingList, data }) => {
   const [seachValue, setSearchValue] = useState<string>('');
 
   useEffect(() => {
     setShoppingList(
-      testShopping.filter(
+      data.filter(
         (element) =>
           SHOPPING_VOCAB[element.category]
             .toLowerCase()

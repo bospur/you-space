@@ -15,12 +15,14 @@ interface IShoppingList {
 
 const ShoppingList: FC<IShoppingList> = ({ isUpdate, setIsUpdate }) => {
   const [shoppingList, setShoppingList] = useState<IPurchase[]>([]);
+  const [data, setData] = useState<IPurchase[]>([]);
 
   const getData = useCallback(async () => {
     setIsUpdate(false);
     const res = await purchasesApi.fetchAllList();
     if (!res) return;
     setShoppingList(res.data);
+    setData(data);
   }, []);
 
   useEffect(() => {
@@ -33,7 +35,7 @@ const ShoppingList: FC<IShoppingList> = ({ isUpdate, setIsUpdate }) => {
 
   return (
     <section className={styles.container}>
-      <SearchedList setShoppingList={setShoppingList} />
+      <SearchedList setShoppingList={setShoppingList} data={data} />
       <SortedList
         shoppingList={shoppingList}
         setShoppingList={setShoppingList}

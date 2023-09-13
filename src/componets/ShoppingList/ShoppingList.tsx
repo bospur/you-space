@@ -41,7 +41,11 @@ const ShoppingList: FC<IShoppingList> = ({ isUpdate, setIsUpdate }) => {
       <ul className={styles.wrapper}>
         {shoppingList.length
           ? shoppingList.map((purchase) => (
-              <ShoppingItem key={purchase.purchase_id} purchase={purchase} />
+              <ShoppingItem
+                key={purchase.purchase_id}
+                purchase={purchase}
+                setIsUpdate={setIsUpdate}
+              />
             ))
           : null}
       </ul>

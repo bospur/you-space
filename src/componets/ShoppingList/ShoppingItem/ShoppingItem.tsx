@@ -7,9 +7,10 @@ import purchasesApi from '../../../api/purchases';
 
 interface IShoppingItem {
   purchase: IPurchase;
+  setIsUpdate: SetState<boolean>;
 }
 
-const ShoppingItem: FC<IShoppingItem> = ({ purchase }) => {
+const ShoppingItem: FC<IShoppingItem> = ({ purchase, setIsUpdate }) => {
   const [isMouse, setIsMouse] = useState(false);
 
   const handeleMouseEnter = () => setTimeout(() => setIsMouse(true), 300);
@@ -22,6 +23,7 @@ const ShoppingItem: FC<IShoppingItem> = ({ purchase }) => {
       message: 'Успешно',
       description: 'Запись успешно удалена',
     });
+    setIsUpdate(true);
   };
 
   return (
@@ -32,7 +34,12 @@ const ShoppingItem: FC<IShoppingItem> = ({ purchase }) => {
     >
       <p>{purchase.amount}</p>
       <p>{SHOPPING_VOCAB[purchase.category]}</p>
-      <Button danger type="primary" className={styles.delete}>
+      <Button
+        danger
+        type="primary"
+        className={styles.delete}
+        onClick={handleDelete}
+      >
         {isMouse ? 'Удалить' : null}
       </Button>
     </li>

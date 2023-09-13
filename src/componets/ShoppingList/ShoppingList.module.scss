@@ -1,9 +1,19 @@
-.wrapper {
-  list-style: none;
-  padding-inline-start: 0;
-  margin: 0 auto;
+.container {
+  padding: 1rem;
   display: flex;
   flex-direction: column;
-  max-width: 600px;
+  align-items: center;
   gap: 1rem;
+  width: 100%;
+
+  .wrapper {
+    list-style: none;
+    padding-inline-start: 0;
+
+    display: flex;
+    flex-direction: column;
+    width: 100%;
+    max-width: 600px;
+    gap: 1rem;
+  }
 }

@@ -1,13 +1,16 @@
-import { notification } from "antd";
-import axios, { AxiosRequestConfig } from "axios";
+import { notification } from 'antd';
+import axios, { AxiosRequestConfig } from 'axios';
 
 const HEADERS = {
-  "Content-Type": "application/json",
-  "Access-Control-Allow-Origin": "*",
+  'Content-Type': 'application/json',
+  'Access-Control-Allow-Origin': '*',
 };
 
+const LOCAL = 'http://localhost:5000';
+const PROD = 'http://you.itstud.ru/api/';
+
 const requestSettings: AxiosRequestConfig = {
-  baseURL: "http://you.itstud.ru/api/",
+  baseURL: LOCAL,
   headers: HEADERS,
 };
 
@@ -16,10 +19,10 @@ const onRejectedError = (error: any) => {
     case 0:
     case 502:
       notification.error({
-        message: "Ошибка сервера: 502",
-        description: "Сервер временно недоступен",
+        message: 'Ошибка сервера: 502',
+        description: 'Сервер временно недоступен',
         duration: 0,
-        key: "error-notification",
+        key: 'error-notification',
       });
       break;
   }
@@ -32,7 +35,7 @@ const http = axios.create(requestSettings);
 http.interceptors.response.use((config) => {
   config.status !== 502 &&
     config.status !== 0 &&
-    notification.destroy("error-notification");
+    notification.destroy('error-notification');
 
   return config;
 }, onRejectedError);

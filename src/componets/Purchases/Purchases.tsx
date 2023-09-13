@@ -30,6 +30,7 @@ const Purchases: FC<IPurchase> = ({ setIsUpdate }) => {
       message: 'Ок',
       description: 'Запись добавленна',
     });
+    form.resetFields();
   };
 
   return (

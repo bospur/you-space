@@ -15,17 +15,21 @@ const Purchases: FC<IPurchase> = ({ setIsUpdate }) => {
   const [form] = useForm();
 
   const handleAdd = async () => {
-    // const values = form.getFieldsValue();
+    const values = form.getFieldsValue();
 
-    // const res = await purchasesApi.createNewPurchase(values);
+    const res = await purchasesApi.createNewPurchase(values);
 
-    // if (!res)
-    //   return notification.error({
-    //     message: 'Ошибка',
-    //     description: 'Данные не добавлены в таблицу',
-    //   });
+    if (!res)
+      return notification.error({
+        message: 'Ошибка',
+        description: 'Данные не добавлены в таблицу',
+      });
 
     setIsUpdate(true);
+    notification.success({
+      message: 'Ок',
+      description: 'Запись добавленна',
+    });
   };
 
   return (

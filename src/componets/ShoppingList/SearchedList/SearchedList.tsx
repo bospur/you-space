@@ -4,6 +4,7 @@ import { IPurchase } from '../../../ts/models/shopping.model';
 
 import styles from './SearchedList.module.scss';
 import { SHOPPING_VOCAB } from '../../../constants/vocabluares/shoppingVocab';
+import { testShopping } from '../../../data/testShoppingData';
 
 interface ISearchedList {
   setShoppingList: SetState<IPurchase[]>;
@@ -15,7 +16,7 @@ const SearchedList: FC<ISearchedList> = ({ setShoppingList, data }) => {
 
   useEffect(() => {
     setShoppingList(
-      data.filter(
+      testShopping.filter(
         (element) =>
           SHOPPING_VOCAB[element.category]
             .toLowerCase()

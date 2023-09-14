@@ -14,15 +14,15 @@ interface IShoppingList {
 }
 
 const ShoppingList: FC<IShoppingList> = ({ isUpdate, setIsUpdate }) => {
-  const [shoppingList, setShoppingList] = useState<IPurchase[]>([]);
+  const [shoppingList, setShoppingList] = useState<IPurchase[]>(testShopping);
   const [data, setData] = useState<IPurchase[]>([]);
 
   const getData = useCallback(async () => {
     setIsUpdate(false);
-    const res = await purchasesApi.fetchAllList();
-    if (!res) return;
-    setShoppingList(res.data);
-    setData(data);
+    // const res = await purchasesApi.fetchAllList();
+    // if (!res) return;
+    // setShoppingList(res.data);
+    // setData(data);
   }, []);
 
   useEffect(() => {

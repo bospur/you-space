@@ -2,13 +2,15 @@ import { FC, useEffect, useState } from 'react';
 import { Table as AntdTable } from 'antd';
 import { DataType, ITableColumn } from '../../../ts/models/table.model';
 import { addFiltersSettings } from './helpers/addFiltersSettings';
+import { SizeType } from 'antd/es/config-provider/SizeContext';
 
 interface ITable {
   data: DataType[];
   headers: ITableColumn[];
+  size?: SizeType;
 }
 
-const Table: FC<ITable> = ({ data, headers }) => {
+const Table: FC<ITable> = ({ data, headers, size = 'small' }) => {
   const [columns, setColumns] = useState<ITableColumn[]>([]);
 
   useEffect(() => {
@@ -28,7 +30,7 @@ const Table: FC<ITable> = ({ data, headers }) => {
     setColumns(newColumns);
   }, [headers]);
 
-  return <AntdTable dataSource={data} columns={columns} />;
+  return <AntdTable dataSource={data} columns={columns} size={size} />;
 };
 
 export default Table;

@@ -1,3 +1,5 @@
+import PurchaseStore from './purchaseStore/purchaseStore';
+
 class RootStore {
   purchaseStore;
 
